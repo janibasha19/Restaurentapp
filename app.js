@@ -1,86 +1,68 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetchCategories();
-  setupMenu();
-  // setupSearch();
+const mealfinder = document.getElementById('meal_name')
+
+// home
+// mealfinder.addEventListener('click', () =>{
+//   categories_data()
+// })
+
+// categories-api
+async function categories_data() {
+  let api_data = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
+  let {categories} = await api_data.json()
+  console.log(categories);
+
+let categorycontainer = document.getElementById('category')
+ categories.map(item => {
+  categorycontainer.innerHTML += `
+      <div class="category_cards">
+          <p class="meal_name">${item.strCategory}</p>
+          <img src="${item.strCategoryThumb}" alt="${item.strCategory}">
+      </div>
+     `;
 });
+}
+categories_data()
 
-// categories api//
-async function fetchCategories() {
-  const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
-  const data = await response.json();
-  displayCategories(data.categories);
+// menubar
+function setmenu() {
+  const menubar = document.getElementById('menu_bar')
+  const menu_list = document.getElementById('menu_list')
+  const categorycontainer = document.getElementById('category')
+  // const mealContainer = document.getElementById('mealsContainer')
+
+// menubtn
+  menubar.addEventListener('click', () =>{
+    menu_list.style.display = menu_list.style.display === 'block' ? 'none' : 'block  ';
+  })
+
+  menu_list.addEventListener('click', (onclick) =>{
+   alert('hello')
+
+   if (onclick.target.tagName === 'LI') {
+    const selectedCategory = onclick.target.getAttribute('data-category');
+    mealdata(selectedCategory);
+    menuList.style.display = 'none'; 
+    categorycontainer.style.display = 'none';
+}
+  })
 }
 
-function displayCategories(categories) {
-  const categoriesContainer = document.getElementById('categories');
-  categoriesContainer.innerHTML = categories.map(category => `
-      <div class="category" data-category="${category.strCategory}">
-          <h3>${category.strCategory}</h3>
-          <img src="${category.strCategoryThumb}" alt="${category.strCategory}">
-      </div>
-  `).join('');
+setmenu()
+
+
+// meal-api
+async function mealdata() {
+  let mealapi = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+  let {meals} = await mealapi.json()
+  console.log(meals);
+
+  let mealContainer = document.getElementById('mealsContainer')
+  meals.map(mealitems => {
+    mealContainer.innerHTML += `
+    <div class=meal-cards>
+    <img src = ${mealitems.strCategoryThumb} alt = ${mealitems.strCategory}>
+    <p>${mealitems.strmeal}
+    `
+  }).join('');
 }
-
-
-// menu-button
-function setupMenu() {
-  const menuBtn = document.getElementById('btn');
-  const menuList = document.getElementById('menu-list');
-  const categoriesContainer = document.getElementById('categories');
-  const mealsContainer = document.getElementById('mealsContainer');
-  
-// menu-button
-  menuBtn.addEventListener('click', () => {
-     menuList.style.display = menuList.style.display === 'block' ? 'none' : 'block';
-  });
-  
-
-  // menu-list
-  menuList.addEventListener('click', (onclick) => {
-      if (onclick.target.tagName === 'LI') {
-          const selectedCategory = onclick.target.getAttribute('data-category');
-          fetchMealsByCategory(selectedCategory);
-          menuList.style.display = 'none'; 
-          categoriesContainer.style.display = 'none';
-          mealsContainer.style.display = 'flex'; 
-          mealsContainer.style.flexWrap = 'wrap'
-      }
-  });
-}
-
-
-// meals api
-async function fetchMealsByCategory(category) {
-  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
-  const data = await response.json();
-  displayMeals(data.meals);
-}
-
-function displayMeals(meals) {
-  const mealsContainer = document.getElementById('mealsContainer');
-  mealsContainer.innerHTML = meals.map(meal => `
-      <div class="meal-card">
-          <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-          <h3>${meal.strMeal}</h3>
-      </div>
-  `).join('');
-}
-
-
-// search
-function setupSearch() {
-  document.getElementById('search-btn').addEventListener('click', () => {
-      const query = document.getElementById('search-input').value;
-      searchMeals(query);
-  });
-}
-
-async function searchMeals(query) {
-  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
-  const data = await response.json();
-  if (data.meals) {
-      displayMeals(data.meals);
-  } else {
-      alert('No recipes found.');
-   }
-}
+mealdata()

@@ -12,12 +12,13 @@
     <!-- header -->
    <header class="navbar">
         <div class="logo">
-            <span><i class="fa-solid fa-house-circle-exclamation"></i> MEAL FINDER</span>
+            <i id="meal_logo" class="fa-solid fa-house-circle-exclamation"></i> 
+            <h1 id="meal_name">MEAL FINDER</h1>
         </div>
 
         <div class="menu">
-            <button id="btn" class="menu-btn">☰</button>
-            <ul id="menu-list" class="menu-list">
+            <i id="menu_bar" class="fa-solid fa-bars"></i>
+            <ul id="menu_list" class="menu_list">
                 <li data-category="Beef">Beef</li>
                 <li data-category="Chicken">Chicken</li>
                 <li data-category="Dessert">Dessert</li>
@@ -35,21 +36,22 @@
     </header>
 
     <!-- search-input -->
-    <div class="hero-banner">
-        <div class="banner-content">
-            <input type="text" id="receipes-input" placeholder="Search recipes here ...">
-            <button id="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-        <h1>What are your favorite cuisines?</h1>
-        <p class="personalize">PERSONALIZE YOUR EXPERIENCE</p>
+    <div class="hero-banner"></div>
+    <div class="banner-content">
+        <input type="text" id="receipes-input" placeholder="Search recipes here ...">
+        <button id="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
+   <div class="banner_info">
+    <h1 class="favorite">What are your favorite cuisines?</h1>
+    <p class="personalize">PERSONALIZE YOUR EXPERIENCE</p>
+   </div>
 
     <!-- categorties -->
-          <h1>categories</h1>
-    <div class="categories" id="categories"></div>
+          <h1 class="title">categories</h1>
+    <div class="category" id="category"></div>
 
     <!-- meal -->
-    <div id="mealsContainer" class="meals-container"></div>
+    <div id="mealsContainer" class="meals_container"></div>
 
     <script src="app.js"></script>
 </body>

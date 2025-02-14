@@ -11,15 +11,33 @@ header{
     gap: 20px;
     padding: 15px;
 }
- #logo{
-    width: 40px;
-    border-radius: 100%;
+.logo {
+    width: 25%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    gap: 5%;
 }
-#menu_bar{
+.logo i{
     font-size: 30px;
+}
+.logo .meal_name{
+    font-size
+}
+ 
+#menu_bar{
+    font-size: 25px;
     position: absolute;
-    left: 95%;
-    }
+    left: 90rem;
+    top: 1rem;
+    padding: 10px;
+    border-radius : 5px;
+    z-index: 2;
+}
+#menu_bar:hover{
+    cursor: pointer;
+}
+
 
 /* hero-banner */
 .hero-banner{
@@ -27,7 +45,7 @@ header{
     background-position: center;
     background-size: cover;
     height: 100vh;
-    filter: brightness(30%);
+    filter: brightness(25%);
 }
 .banner-content{
     display: flex;
@@ -36,11 +54,15 @@ header{
     position: absolute;
     left: 35%;
     bottom: 55%;
+    filter: brightness(100%);
+    transform: translate(20% ,50%);
+
 }
 #receipes-input{ 
-    width: 50%;
+    width: 15rem;
     font-size: 15px;
     padding: 15px;
+    display: flex;
     border-radius: 30px;
 }
 #Search{
@@ -49,8 +71,12 @@ header{
     padding: 15px;
     border-radius: 50%;
     cursor: pointer;
+    font-size: 20px;
 }
-.banner-info{
+#Search:hover{
+    background-color: #fff;
+}
+.banner_info{
     font-size: 20px;
     color: white;
     position: absolute;
@@ -59,15 +85,18 @@ header{
     letter-spacing: 5px;
     text-align: center;
 }
+.banner_info p{
+    padding-top: 20px;
+}
 
 /* categories */
-.menu_name{
+.title{
     font-family: Arial, Helvetica, sans-serif;
     padding: 30px;
     margin-top: 60px;
    
 }
-.menu_name::after{
+.title::after{
     content: "";
     display: block;
     width: 80px;
@@ -75,149 +104,64 @@ header{
     margin-top: 10px;
     background-color: orange;
 }
-.categories{
+.category{
     display: flex;
     flex-wrap: wrap;
-    margin-left: 45px;
+    margin-left: 6rem;
     position: relative;
 }
-.categories img{
-    width: 300px;
+.category img{
+    width: 250px;
     border: 1px solid white;
-    padding: 15px;
+    padding: 30px;
     margin: 10px;
     border-radius: 10px;
+    transition: transform 0.5s ease-in-out;
     -webkit-box-shadow: 1px 1px 11px 1px rgba(122, 123, 128, 1);
 -moz-box-shadow: 1px 1px 11px 1px rgba(122, 123, 128, 1);
 box-shadow: 1px 1px 11px 1px rgba(122, 123, 128, 1);
 }
-.categories p{
+.category img:hover{
+    transform: scale(1.05);
+}
+.category p{
     font-size: 15px;
     background:orange;
     position: absolute;
     margin-left: 23px;
     margin-top: 20px;
     border-radius: 5px;
-    padding: 7px;    
+    padding: 7px;
+    z-index: 1;    
 }
 
-/* Menu Bar (Initially Hidden) */
-#menu_bar {
+/* menubar */
+.menu_list{
+    width: 15%;
+    height: 70vh;
     list-style: none;
-    padding: 10px;
-    background: #ff9800;
+    padding-top: 3rem;
     position: absolute;
-    top: 11px;
-    right: 10px;
-    width: 127px;
+    right: 0;
+    top: 1rem;
+    background-color: white;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    z-index: 999;
-    
+    z-index: 1;
+    transition: 0.5s ease-in;
 }
 
-/* Show Menu When Toggled */
-.show_menu {
-    display: none;
-}
-
-/* Menu Items */
-.menu_item {
-    width: 100px;
-    cursor: pointer;
-    background: white;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
+.menu_list li{
+    width: 60%;
     text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-    transition:  0.2s ease-in-out;
-    display: flex;
-}
-
-.menu_item:hover {
-    background-color: rgb(238, 134, 37);
-    transform: scale(1.2);
-}
-
-/* meal cards */
-
-#meal_container img{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    width: 250px;
-    height: 250px;
-    border: 1px solid white;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 10px;
-    -webkit-box-shadow: 1px 1px 11px 1px rgba(122, 123, 128, 1);
--moz-box-shadow: 1px 1px 11px 1px rgba(122, 123, 128, 1);
-box-shadow: 1px 1px 11px 1px rgba(122, 123, 128, 1);
-}
-#meal_container p{
-    font-size: 15px;
-    background-color: orange;
+    padding: 8px;
+    margin: 5px auto;
+    border: 1px solid transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) ;
     border-radius: 5px;
-    position: absolute;
-    padding: 10px;
-    margin-left: 23px;
-    margin-top: 10px;
 }
-
-
-
-
-
-
-@media only screen and (max-width: 768px){
-    header{
-        width: 632px;
-        background-color: rgb(237, 147, 52);
-    }
-    #logo{
-        width: 40px;
-        border-radius: 100%;
-    }
-    #dashboard-name{
-        font-size: 25px;
-    }
-    #menu_bar{
-        font-size: 25px;
-        position: absolute;
-        left: 600px;
-        }
-     /* hero-banner */
-.hero-banner{
-    background-image: url(./images/Banner.jpg);
-    background-position: center;
-    background-size: cover;
-}
-.banner-content{
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    position: absolute;
-    left: 35%;
-    bottom: 55%;
-}
-#receipes-input{ 
-    width: 350px;
-    font-size: 15px;
-    padding: 15px;
-    border-radius: 30px;
-}
-#Search{
-    border: 1px solid white;
+.menu_list li:hover{
     background-color: orange;
-    padding: 15px;
-}
-.banner-info{
-    font-size: 12px;
-    position: absolute;
-    left: 10%;
-    bottom: 40%;
-    
-}
-           
+    transform: scale(1.2);
+    cursor: pointer;
 }
