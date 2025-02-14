@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./style.css">
+    <title>Meals Deal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
     <!-- header -->
-    <header>
-        <img id="logo" src="./images/restaurant-icon2.jpg" alt="">
-        <h1 id="dashboard-name">MEAL FINDER</h1>
-        <i id="menu_bar" class="fa-solid fa-bars"></i>
+   <header class="navbar">
+        <div class="logo">
+            <span><i class="fa-solid fa-house-circle-exclamation"></i> MEAL FINDER</span>
+        </div>
+
+        <div class="menu">
+            <button id="btn" class="menu-btn">☰</button>
+            <ul id="menu-list" class="menu-list">
+                <li data-category="Beef">Beef</li>
+                <li data-category="Chicken">Chicken</li>
+                <li data-category="Dessert">Dessert</li>
+                <li data-category="Lamb">Lamb</li>
+                <li data-category="Miscellaneous">Miscellaneous</li>
+                <li data-category="Pasta">Pasta</li>
+                <li data-category="Pork">Pork</li>
+                <li data-category="Seafood">Seafood</li>
+                <li data-category="Side">Side</li>
+                <li data-category="starter">starter</li>
+                <li data-category="vegan">vegan</li>
+                <li data-category="vegetarian">vegetarian</li>
+            </ul>
+        </div>
     </header>
 
-    <!-- banner -->
+    <!-- search-input -->
     <div class="hero-banner">
-    </div>
-    <div class="banner-content">
-        <input id="receipes-input" type="text" placeholder="Search your receipes... ">
-        <i id="Search" class="fa-solid fa-magnifying-glass"></i>
-    </div>
-    <div class="banner-info">
-        <h1>What are your favourite cuisines?</h1>
-        <p>PERSONALIZE YOUR EXPERIENCE</p>
+        <div class="banner-content">
+            <input type="text" id="receipes-input" placeholder="Search recipes here ...">
+            <button id="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <h1>What are your favorite cuisines?</h1>
+        <p class="personalize">PERSONALIZE YOUR EXPERIENCE</p>
     </div>
 
-    <!-- category -->
-    <h1 class="menu_name">CATEGORIES</h1>
+    <!-- categorties -->
+          <h1>categories</h1>
+    <div class="categories" id="categories"></div>
 
-    <div class="categories" id="categories">
-    </div>
+    <!-- meal -->
+    <div id="mealsContainer" class="meals-container"></div>
 
-    <!-- Meal container to display selected category meals -->
-    <h1 class="menu_name">MEALS</h1>
-    <div id="meal_container"></div>
-
-
-
-
-    <script src="./app.js"></script>
+    <script src="app.js"></script>
 </body>
-
 </html>
