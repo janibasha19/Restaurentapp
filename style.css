@@ -149,6 +149,8 @@ box-shadow: 1px 1px 11px 1px rgba(122, 123, 128, 1);
     border-radius: 5px;
     z-index: 1;
     transition: 0.5s ease-in;
+    display: none;
+
 }
 
 .menu_list li{

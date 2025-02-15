@@ -28,7 +28,7 @@ function setmenu() {
   const menubar = document.getElementById('menu_bar')
   const menu_list = document.getElementById('menu_list')
   const categorycontainer = document.getElementById('category')
-  // const mealContainer = document.getElementById('mealsContainer')
+  const mealContainer = document.getElementById('mealsContainer')
 
 // menubtn
   menubar.addEventListener('click', () =>{
@@ -36,14 +36,15 @@ function setmenu() {
   })
 
   menu_list.addEventListener('click', (onclick) =>{
-   alert('hello')
 
    if (onclick.target.tagName === 'LI') {
     const selectedCategory = onclick.target.getAttribute('data-category');
-    mealdata(selectedCategory);
-    menuList.style.display = 'none'; 
+    MealsCategory(selectedCategory);
+    menu_list.style.display = 'none';
     categorycontainer.style.display = 'none';
-}
+    mealContainer.style.display = 'flex';
+    mealContainer.style.flexWrap = 'wrap'
+ }
   })
 }
 
@@ -51,18 +52,19 @@ setmenu()
 
 
 // meal-api
-async function mealdata() {
-  let mealapi = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
-  let {meals} = await mealapi.json()
-  console.log(meals);
 
-  let mealContainer = document.getElementById('mealsContainer')
-  meals.map(mealitems => {
-    mealContainer.innerHTML += `
-    <div class=meal-cards>
-    <img src = ${mealitems.strCategoryThumb} alt = ${mealitems.strCategory}>
-    <p>${mealitems.strmeal}
-    `
-  }).join('');
+async function MealsCategory(category) {
+  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+  const data = await response.json();
+  displayMeals(data.meals);
 }
-mealdata()
+
+function displayMeals(meals) {
+  const mealsContainer = document.getElementById('mealsContainer');
+  mealsContainer.innerHTML = meals.map(meal => `
+      <div class="meal-card">
+          <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+          <h3>${meal.strMeal}</h3>
+      </div>
+  `)
+}
